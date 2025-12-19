@@ -1,0 +1,87 @@
+{
+  "info": {
+    "name": "Certificate API Collection",
+    "description": "API endpoints for certificate management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Store Single Certificate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"master_policy_number\": \"22N38840\",\n  \"status\": \"Active\",\n  \"item_number\": \"TEST001\",\n  \"gr_lr_number\": \"GR2025TEST001\",\n  \"gr_lr_date\": \"2025-01-18\",\n  \"insured_commodity\": \"Test Goods\",\n  \"cargo_value\": 100000,\n  \"insured_name\": \"Test Company Pvt Ltd\",\n  \"cc_mail\": \"cc@testcompany.com\",\n  \"insured_address\": \"Test Address, Test City 100001\",\n  \"insured_mobile\": \"9999999999\",\n  \"insured_email\": \"test@testcompany.com\",\n  \"voyage_from\": \"Test City A\",\n  \"voyage_to\": \"Test City B\",\n  \"invoice_number\": \"TEST-INV-001\",\n  \"invoice_date\": \"2025-01-17\",\n  \"declaration_id\": \"TEST-DECL-001\",\n  \"description\": \"Test shipment\",\n  \"master_policy_type\": \"Marine\",\n  \"policy_source\": \"API\",\n  \"vb_64\": \"VB64-TEST-001\",\n  \"is_cancelled\": false,\n  \"is_intracity\": false,\n  \"is_intercity\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/certificates/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "certificates", "store"]
+        }
+      }
+    },
+    {
+      "name": "Store Bulk Certificates (10 records)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"certificates\": [\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 150000,\n      \"insured_name\": \"ABC Electronics Ltd\",\n      \"insured_email\": \"info@abcelectronics.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 200000,\n      \"insured_name\": \"Fashion Hub Pvt Ltd\",\n      \"insured_email\": \"info@fashionhub.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 180000,\n      \"insured_name\": \"HomeStyle Furniture Co\",\n      \"insured_email\": \"contact@homestyle.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 350000,\n      \"insured_name\": \"Industrial Solutions Ltd\",\n      \"insured_email\": \"sales@industrial.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 500000,\n      \"insured_name\": \"HealthCare Pharma Pvt Ltd\",\n      \"insured_email\": \"info@healthcare.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 120000,\n      \"insured_name\": \"Retail Express Ltd\",\n      \"insured_email\": \"support@retailexpress.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 280000,\n      \"insured_name\": \"Auto Components India\",\n      \"insured_email\": \"contact@autocomponents.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 95000,\n      \"insured_name\": \"FarmFresh Produce Ltd\",\n      \"insured_email\": \"sales@farmfresh.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 420000,\n      \"insured_name\": \"Construction Supplies Co\",\n      \"insured_email\": \"info@construction.com\",\n      \"is_intercity\": true\n    },\n    {\n      \"master_policy_number\": \"22N38840\",\n      \"cargo_value\": 165000,\n      \"insured_name\": \"Beauty Products India\",\n      \"insured_email\": \"contact@beautyproducts.com\",\n      \"is_intercity\": true\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/certificates/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "certificates", "store"]
+        }
+      }
+    },
+    {
+      "name": "Check Certificate Status",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cover_letter_no\": \"SSZOOM00000000001\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/certificates/status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "certificates", "status"]
+        }
+      }
+    }
+  ]
+}

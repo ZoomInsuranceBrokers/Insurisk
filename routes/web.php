@@ -6,6 +6,8 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\CdAccountController;
 use App\Http\Controllers\MasterPolicyController;
+use App\Http\Controllers\Api\CertificateApiController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,6 +19,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::prefix('api')
+    ->middleware('api')
+    ->withoutMiddleware([VerifyCsrfToken::class])
+    ->group(function () {
+        Route::post('/certificates/store', [CertificateApiController::class, 'store'])->name('api.certificates.store');
+        Route::post('/certificates/status', [CertificateApiController::class, 'status'])->name('api.certificates.status');
+        Route::post('/certificates/marine-declaration', [CertificateApiController::class, 'marineDeclarationSoap'])->name('api.marineDeclarationSoap');
+
+    });
 
 Route::middleware('auth')->group(function () {
     // Profile (if you have profile controller)
